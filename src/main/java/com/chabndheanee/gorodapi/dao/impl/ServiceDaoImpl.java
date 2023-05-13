@@ -22,8 +22,7 @@ public class ServiceDaoImpl implements ServiceDao {
     public List<Service> getHierarchy() {
         String sql = "SELECT * FROM services " +
                 "WHERE id NOT IN (SELECT child_id FROM services_children)";
-        List<Service> result = jdbcTemplate.query(sql, helper::makeService);
-        return result;
+        return jdbcTemplate.query(sql, helper::makeService);
 
     }
 
@@ -43,8 +42,13 @@ public class ServiceDaoImpl implements ServiceDao {
             sql = "DELETE FROM services WHERE ID=?";
 
             for (Service ser : service.getChildren()) {
+                if (ser.getChildren().size() > 0) {
+                    deleteService(true, ser.getId());
+                }
                 jdbcTemplate.update(sql, ser.getId());
             }
+
+            jdbcTemplate.update(sql, serviceId);
         } else {
             checkService(service);
             sql = "DELETE FROM services WHERE id=?";

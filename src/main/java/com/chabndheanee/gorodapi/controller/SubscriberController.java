@@ -3,7 +3,6 @@ package com.chabndheanee.gorodapi.controller;
 import com.chabndheanee.gorodapi.model.Subscriber;
 import com.chabndheanee.gorodapi.service.SubscriberService;
 import lombok.AllArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class SubscriberController {
     }
 
     @PostMapping
-    public int createSubscriber(@RequestBody @Validated Subscriber subscriber) {
+    public int createSubscriber(@RequestBody Subscriber subscriber) {
         return service.createSubscriber(subscriber);
     }
 }

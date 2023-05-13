@@ -24,11 +24,11 @@ public class SubscriberDaoImpl implements SubscriberDao {
         String sql = "SELECT * FROM subscribers ";
 
         if (filter != null) {
-            sql += "WHERE account=" + filter;
+            sql += " WHERE account='" + filter + "'";
         }
 
         if (sortBy) {
-            sql += " SORT BY account ";
+            sql += " ORDER BY account ";
         }
 
         List<Subscriber> result = jdbcTemplate.query(sql, helper::makeSubscriber);
@@ -46,7 +46,7 @@ public class SubscriberDaoImpl implements SubscriberDao {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(con -> {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, new String[]{"id"});
             ps.setString(1, subscriber.getFio());
             ps.setString(2, subscriber.getAccount());
             ps.setInt(3, subscriber.getService().getId());
