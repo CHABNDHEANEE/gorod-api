@@ -23,12 +23,11 @@ public class DaoHelper {
     }
 
     public Service makeService(ResultSet rs, int rowNum) throws SQLException {
-        Service result = Service.builder()
+        return Service.builder()
                 .id(rs.getInt("id"))
                 .name(rs.getString("name"))
                 .children(getChildList(rs.getInt("id")))
                 .build();
-        return result;
     }
 
     public List<Subscriber> getSubscribersByServiceId(boolean includeChild, Integer page, Integer service_id) {
@@ -49,6 +48,7 @@ public class DaoHelper {
 
     public Subscriber makeSubscriber(ResultSet rs, int rowNum) throws SQLException {
         return Subscriber.builder()
+                .id(rs.getInt("id"))
                 .fio(rs.getString("fio"))
                 .account(rs.getString("account"))
                 .service(getService(rs.getInt("service_id")))
