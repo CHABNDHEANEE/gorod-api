@@ -21,7 +21,7 @@ public class ServiceController {
 
     @DeleteMapping
     public void deleteService(@RequestParam(defaultValue = "false") boolean force,
-                              @RequestParam Integer serviceToDelete) {
+                              @RequestParam(value = "id") Integer serviceToDelete) {
         service.deleteService(force, serviceToDelete);
     }
 }

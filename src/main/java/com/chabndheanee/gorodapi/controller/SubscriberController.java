@@ -14,7 +14,7 @@ public class SubscriberController {
     private final SubscriberService service;
 
     @GetMapping
-    public List<Subscriber> getSubscribers(@RequestParam(required = false) String sortBy,
+    public List<Subscriber> getSubscribers(@RequestParam(defaultValue = "false") Boolean sortBy,
                                            @RequestParam(required = false) String filter,
                                            @RequestParam(defaultValue = "1") Integer page) {
         return service.getSubscribers(sortBy, filter, page);

@@ -20,14 +20,14 @@ public class SubscriberDaoImpl implements SubscriberDao {
     private final DaoHelper helper;
 
     @Override
-    public List<Subscriber> getSubscribers(String sortBy, String filter, Integer page) {
+    public List<Subscriber> getSubscribers(Boolean sortBy, String filter, Integer page) {
         String sql = "SELECT * FROM subscribers ";
 
         if (filter != null) {
             sql += "WHERE account=" + filter;
         }
 
-        if (sortBy != null) {
+        if (sortBy) {
             sql += " SORT BY account ";
         }
 

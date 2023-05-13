@@ -12,7 +12,7 @@ import java.util.List;
 public class SubscriberService {
     private final SubscriberDao dao;
 
-    public List<Subscriber> getSubscribers(String sortBy, String filter, Integer page) {
+    public List<Subscriber> getSubscribers(Boolean sortBy, String filter, Integer page) {
         return dao.getSubscribers(sortBy, filter, page);
     }
 
