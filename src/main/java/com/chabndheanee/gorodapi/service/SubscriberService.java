@@ -16,8 +16,8 @@ public class SubscriberService {
         return dao.getSubscribers(sortBy, filter, page);
     }
 
-    public List<Subscriber> searchSubscriber(boolean includeChild, Integer page, Integer service_id) {
-        return dao.searchSubscriber(includeChild, page, service_id);
+    public List<Subscriber> searchSubscriber(boolean includeChild, Integer page, Integer serviceId) {
+        return dao.searchSubscriber(includeChild, page, serviceId);
     }
 
     public int createSubscriber(Subscriber subscriber) {

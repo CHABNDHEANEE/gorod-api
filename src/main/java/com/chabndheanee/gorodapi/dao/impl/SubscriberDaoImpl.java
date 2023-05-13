@@ -57,8 +57,8 @@ public class SubscriberDaoImpl implements SubscriberDao {
     }
 
     @Override
-    public List<Subscriber> searchSubscriber(boolean includeChild, Integer page, Integer service_id) {
-        return helper.getSubscribersByServiceId(includeChild, page, service_id);
+    public List<Subscriber> searchSubscriber(boolean includeChild, Integer page, Integer serviceId) {
+        return helper.getSubscribersByServiceId(includeChild, page, serviceId);
     }
 
     private void checkSubscriber(Subscriber subscriber) {

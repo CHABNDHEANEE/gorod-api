@@ -23,8 +23,8 @@ public class SubscriberController {
     @GetMapping("/search")
     public List<Subscriber> searchSubscriber(@RequestParam(defaultValue = "false") boolean includeChild,
                                              @RequestParam(defaultValue = "1") Integer page,
-                                             @RequestParam Integer service_id) {
-        return service.searchSubscriber(includeChild, page, service_id);
+                                             @RequestParam Integer serviceId) {
+        return service.searchSubscriber(includeChild, page, serviceId);
     }
 
     @PostMapping
